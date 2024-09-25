@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muad'Dib - Profilová prezentace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Muad'Dib</h1>
+        <nav>
+            <ul>
+                <li><a href="#uvod">Uvod</a></li>
+                <li><a href="#biografie">Biografie</a></li>
+                <li><a href="#filozofie">Filozofie</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="uvod">
+            <h2>Uvod</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut tristique nunc. Phasellus sagittis consequat leo, non bibendum tortor malesuada vitae. Nunc orci dui, tempus sed risus in, pretium suscipit enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam nec orci scelerisque elit laoreet volutpat. Pellentesque sed nunc ac nibh commodo suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut dapibus vitae tortor in condimentum. Quisque tincidunt ipsum luctus pretium consequat. Suspendisse id sollicitudin libero, eget tincidunt lorem. Etiam at leo lorem. Aenean at luctus metus. Donec vitae neque semper ante finibus imperdiet non eu odio. Ut maximus id odio vel pretium.</p>
+        </section>
+        <section id="biografie">
+            <h2>Biografie</h2>
+            <article>
+                <h3>Rany zivot</h3>
+                <p>Phasellus quis efficitur orci, cursus aliquam nibh. Nunc vehicula pulvinar lacinia. Interdum et malesuada fames ac ante ipsum primis in faucibus. In imperdiet lectus neque, non mollis urna fermentum ut. Duis egestas est nunc, non rutrum mi molestie eu. Curabitur egestas rutrum erat sed consectetur. Vivamus fermentum ligula ac elit sodales, at convallis magna laoreet.</p>
+            </article>
+            <article>
+                <h3>Vzestup k moci</h3>
+                <p>Etiam eget gravida tellus. Vestibulum aliquam felis mi, congue faucibus risus tincidunt facilisis. Morbi condimentum metus id justo pellentesque, eget congue odio imperdiet. Etiam non diam tempor, cursus velit at, sollicitudin purus. Nullam ornare, felis quis tincidunt dapibus, nunc urna malesuada sem, vitae laoreet velit magna vulputate mi. Praesent interdum sodales imperdiet. Aliquam vel libero quis tortor commodo bibendum.</p>
+            </article>
+        </section>
+        <section id="filozofie">
+            <h2>Filozofie</h2>
+            <p>Duis interdum ligula vel mauris tempus blandit. Curabitur gravida id odio non condimentum. Praesent vulputate magna at rhoncus semper. Pellentesque tincidunt posuere vulputate. Sed vulputate hendrerit nulla ac laoreet. Phasellus faucibus, erat vitae malesuada efficitur, mi velit rutrum sem, a feugiat eros nunc nec arcu. Vestibulum elementum leo urna, id maximus lorem porta in. Morbi semper feugiat tortor vel ornare. Nulla eget ultricies erat, ac pellentesque velit. Morbi imperdiet scelerisque tortor, eu faucibus massa cursus et. Quisque sed pharetra elit. Aenean arcu turpis, sodales non eros vel, posuere luctus turpis. Sed porta, eros at consequat sagittis, sapien justo aliquet nulla, in rutrum felis ex nec dolor. Praesent non congue ipsum. In in ultricies dolor, id ullamcorper velit.</p>
+        </section>
+        <section id="galerie">
+            <h2>Galerie</h2>
+            <div id="gallery-container">
+                <img id="1" src="1.jpeg" alt="Muad'Dib 1">
+                <img id="2" src="2.jpg" alt="Muad'Dib 2">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Muad'Dib 2. projekt do předmětu ITW</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('header nav');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            const fixedNavHeight = header.offsetHeight; // Výška fixní navigace, může se lišit
+          
+            function onScroll() {
+              if (window.scrollY > fixedNavHeight) {
+                header.classList.add('fixed-nav');
+              } else {
+                header.classList.remove('fixed-nav');
+              }
+            }
+          
+            function scrollToSection(event) {
+              event.preventDefault();
+              const targetId = event.currentTarget.getAttribute('href');
+              const target = document.querySelector(targetId);
+          
+              // Skočíme na pozici cílové sekce minus výška fixní navigace
+              const offsetTop = target.offsetTop - fixedNavHeight;
+          
+              window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+              });
+            }
+          
+            // Posluchač pro každý odkaz v navigaci
+            navLinks.forEach(link => {
+              link.addEventListener('click', scrollToSection);
+            });
+          
+            // Posluchač pro událost skrolování
+            window.addEventListener('scroll', onScroll);
+          
+            // Aplikujeme fixní navigaci hned po načtení stránky, pokud je již stránka skrolovaná
+            onScroll(); // Zavolej onScroll hned po načtení pro kontrolu pozice skrolu
+          });
+          
+                
+    </script>
+    
+</body>
+</html>
